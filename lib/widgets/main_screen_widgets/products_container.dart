@@ -16,6 +16,7 @@ class ProductsContainer extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: Data.items.length,
         itemBuilder: (context, index) {
+          final product = Data.items[index];
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -44,7 +45,7 @@ class ProductsContainer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        Data.items[index],
+                        product["name"].toString(),
                         style: GoogleFonts.manrope(
                             color: const Color(0xFF1E222B),
                             fontWeight: FontWeight.bold,
@@ -52,7 +53,7 @@ class ProductsContainer extends StatelessWidget {
                             height: 1.43),
                       ),
                       Text(
-                        Data.type[index],
+                        product["variants"].toString(),
                         style:
                             GoogleFonts.manrope(color: const Color(0xFF61697C)),
                       ),
@@ -65,6 +66,5 @@ class ProductsContainer extends StatelessWidget {
         },
       ),
     );
-    
   }
 }

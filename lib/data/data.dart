@@ -13,8 +13,11 @@ class Data {
     ['Unbeatable', '\nBargains', "\nAwait", const Color(0xFFF9B023)],
   ];
 
-  static List<String> items = ["Fresh Lemon", "Green Tea", "Fresh Fish"];
-  static List<String> type = ["Organic", "Organic", "Organic"];
+  static final List<Map<String, String>> items = [
+    {"name": "Fresh Lemon", "variants": "Organic"},
+    {"name": "Green Tea", "variants": "Organic"},
+    {"name": "Fresh Fish", "variants": "Organic"}
+  ];
 
   static final savings = [
     ["346", " USD", "\nYour total savings", const Color(0xFFF9B023)],
@@ -26,6 +29,14 @@ class Data {
     ["\$325", "\nOrange Package 1", "1 bundle", Colors.grey],
     ["\$89", "Green Tea Package 2", " 1 bundle", Colors.grey],
     ["\$69", "Mango deal 1", " Buy 1 get 1 free", Colors.grey]
+  ];
+
+  static final List<Map<String, String>> category = [
+    {"name": "Fishes", "variants": "From Sea"},
+    {"name": "Meats", "variants": "Organic"},
+    {"name": "Vegetables", "variants": "Organic"},{"name": "Fruits", "variants": "Fresh & Organic"},
+    {"name": "Chicken", "variants": "Fresh & Organic"},{"name": "Dairy", "variants": "Fresh"},
+    {"name": "Grains", "variants": "Fresh & Organic"},{"name": "Beverages", "variants": "Nutritional"}
   ];
 }
 

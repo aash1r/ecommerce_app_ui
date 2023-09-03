@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../ui/screens/main_screen/main_screen.dart';
+import 'package:smit_mini_project/widgets/main_screen_widgets/bottom_navbar.dart';
 
 class GetStartedButton extends StatelessWidget {
   const GetStartedButton({super.key});
@@ -11,7 +10,7 @@ class GetStartedButton extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (_) => const MainScreen()));
+            context, MaterialPageRoute(builder: (_) => const BottomNavBar()));
       },
       child: Container(
         decoration: BoxDecoration(
