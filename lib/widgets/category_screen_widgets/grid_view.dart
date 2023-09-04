@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smit_mini_project/ui/screens/category_screen/category_detail.dart';
 
 import '../../data/data.dart';
 
@@ -19,9 +20,13 @@ class CustomGridView extends StatelessWidget {
           final product = Data.category[index];
           return Padding(
             padding: const EdgeInsets.all(8.0),
-            child: InkWell(
+            child: GestureDetector(
               onTap: () {
-                  
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CategoryDetails(index: index),
+                    ));
               },
               child: Container(
                 height: 150,
@@ -58,8 +63,8 @@ class CustomGridView extends StatelessWidget {
                         ),
                         Text(
                           product["variants"].toString(),
-                          style:
-                              GoogleFonts.manrope(color: const Color(0xFF61697C)),
+                          style: GoogleFonts.manrope(
+                              color: const Color(0xFF61697C)),
                         ),
                       ],
                     ),

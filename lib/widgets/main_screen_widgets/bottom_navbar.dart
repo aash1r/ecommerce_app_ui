@@ -1,5 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:smit_mini_project/ui/screens/favourites_screen/favourites.dart';
+import 'package:smit_mini_project/ui/screens/more_screen/more_details.dart';
 import '../../ui/screens/main_screen/main_screen.dart';
 import '../../ui/screens/category_screen/category.dart';
 
@@ -12,9 +14,11 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int currentIndex = 0;
-  List<Widget> screensWidgets = [
+  final screensWidgets = [
     const MainScreen(),
     const CategoriesScreen(),
+    const FavouritesScreen(),
+    const MoreDetailsScreen(),
   ];
 
   @override
@@ -41,6 +45,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
               ),
               Icon(
                 Icons.category_outlined,
+                color: Colors.white54,
+              ),
+              Icon(
+                Icons.favorite_outline,
+                color: Colors.white54,
+              ),
+              Icon(
+                Icons.more_outlined,
                 color: Colors.white54,
               ),
             ]),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smit_mini_project/ui/screens/category_screen/category.dart';
 import '../../../widgets/main_screen_widgets/deals_container.dart';
 import '../../../widgets/main_screen_widgets/main_screen_bar.dart';
 import '../../../widgets/main_screen_widgets/offers_container.dart';
