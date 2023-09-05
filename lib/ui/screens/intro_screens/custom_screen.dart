@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:smit_mini_project/widgets/onboarding_screen_widgets/get_started_button.dart';
+import 'package:smit_mini_project/ui/screens/intro_screens/widgets/get_started_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class CustomScreen extends StatelessWidget {

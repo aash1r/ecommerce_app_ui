@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smit_mini_project/ui/screens/category_screen/category_detail.dart';
 
-import '../../data/data.dart';
+import '../../../../data/data.dart';
 
 class CustomGridView extends StatelessWidget {
   const CustomGridView({super.key});

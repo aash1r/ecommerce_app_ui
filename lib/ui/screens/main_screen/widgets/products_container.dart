@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../data/data.dart';
+import '../../../../data/data.dart';
 
 class ProductsContainer extends StatelessWidget {
   const ProductsContainer({super.key});

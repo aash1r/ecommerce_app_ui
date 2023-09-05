@@ -34,9 +34,9 @@ class Data {
   static final List<Map<String, String>> category = [
     {"name": "Fishes", "variants": "From Sea"},
     {"name": "Meats", "variants": "Organic"},
-    {"name": "Vegetables", "variants": "Organic"},{"name": "Fruits", "variants": "Fresh & Organic"},
-    {"name": "Chicken", "variants": "Fresh & Organic"},{"name": "Dairy", "variants": "Fresh"},
-    {"name": "Grains", "variants": "Fresh & Organic"},{"name": "Beverages", "variants": "Nutritional"}
+    {"name": "Vegetables", "variants": "Organic"},
+    {"name": "Fruits", "variants": "Fresh & Organic"},
+    {"name": "Chicken", "variants": "Fresh & Organic"},
   ];
 }
 

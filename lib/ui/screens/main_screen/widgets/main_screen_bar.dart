@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../onboarding_screen_widgets/list_tile.dart';
+import '../../intro_screens/widgets/list_tile.dart';
 
 class MainScreenBar extends StatelessWidget {
   const MainScreenBar({super.key});

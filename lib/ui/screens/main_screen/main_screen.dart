@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../widgets/main_screen_widgets/deals_container.dart';
-import '../../../widgets/main_screen_widgets/main_screen_bar.dart';
-import '../../../widgets/main_screen_widgets/offers_container.dart';
-import '../../../widgets/main_screen_widgets/products_container.dart';
-import '../../../widgets/main_screen_widgets/savings_container.dart';
+import 'widgets/deals_container.dart';
+import 'widgets/main_screen_bar.dart';
+import 'widgets/offers_container.dart';
+import 'widgets/products_container.dart';
+import 'widgets/savings_container.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});

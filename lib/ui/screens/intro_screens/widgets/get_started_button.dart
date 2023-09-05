@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smit_mini_project/widgets/main_screen_widgets/bottom_navbar.dart';
+import 'package:smit_mini_project/ui/screens/main_screen/widgets/bottom_navbar.dart';
 
 class GetStartedButton extends StatelessWidget {
   const GetStartedButton({super.key});

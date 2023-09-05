@@ -2,8 +2,8 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:smit_mini_project/ui/screens/favourites_screen/favourites.dart';
 import 'package:smit_mini_project/ui/screens/more_screen/more_details.dart';
-import '../../ui/screens/main_screen/main_screen.dart';
-import '../../ui/screens/category_screen/category.dart';
+import '../main_screen.dart';
+import '../../category_screen/category.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:smit_mini_project/widgets/category_screen_widgets/custom_container.dart';
-import 'package:smit_mini_project/widgets/category_screen_widgets/top_bar.dart';
+import 'package:smit_mini_project/ui/screens/category_screen/data/category_lists.dart';
+import 'package:smit_mini_project/ui/screens/category_screen/widgets/top_bar.dart';
 
-class CategoryDetails extends StatelessWidget {
+class CategoryDetails extends StatefulWidget {
   const CategoryDetails({
     this.index,
     super.key,
@@ -10,65 +10,96 @@ class CategoryDetails extends StatelessWidget {
   final int? index;
 
   @override
+  State<CategoryDetails> createState() => _CategoryDetailsState();
+}
+
+class _CategoryDetailsState extends State<CategoryDetails> {
+  final List<String> categories = [
+    "Meats & Fishes",
+    "Vegetables",
+    "Fruits",
+    "Chicken"
+  ];
+
+  List<String> selectedCategories = [];
+
+  @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    final filterProducts = productList.where((product) {
+      return selectedCategories.isEmpty ||
+          selectedCategories.contains(product.category);
+    }).toList();
+    return Scaffold(
       body: Column(children: [
-        Expanded(flex: 1, child: CustomTopBar()),
-        Expanded(
-          flex: 2,
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomContainer(
-                    text1: "Meats & Fishes",
-                    newcolor: Color(0xFFF9B023),
-                    newwidth: 132,
-                  ),
-                  SizedBox(width: 2),
-                  CustomContainer(
-                      newwidth: 108,
-                      newcolor: Color(0xFFB2BACE),
-                      text1: "Vegetables"),
-                  SizedBox(width: 2),
-                  CustomContainer(
-                      newwidth: 71,
-                      newcolor: Color(0xFFB2BACE),
-                      text1: "Fruits"),
-                  SizedBox(width: 2),
-                  CustomContainer(
-                      newwidth: 75,
-                      newcolor: Color(0xFFB2BACE),
-                      text1: "Meats"),
-                  SizedBox(width: 2),
-                  CustomContainer(
-                      newwidth: 85,
-                      newcolor: Color(0xFFB2BACE),
-                      text1: "Chicken"),
-                  SizedBox(width: 2),
-                  CustomContainer(
-                      newwidth: 80,
-                      newcolor: Color(0xFFB2BACE),
-                      text1: "Dairy"),
-                  SizedBox(width: 2),
-                  CustomContainer(
-                      newwidth: 80,
-                      newcolor: Color(0xFFB2BACE),
-                      text1: "Grains"),
-                  SizedBox(width: 2),
-                  CustomContainer(
-                      newwidth: 100,
-                      newcolor:   Color(0xFFB2BACE),
-                      text1: "Beverages"),
-                ],
-              ),
+        const CustomTopBar(),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: categories
+                  .map((category) => Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                        child: FilterChip(
+                            selected: selectedCategories.contains(category),
+                            label: Text(category),
+                            onSelected: (selected) {
+                              setState(() {
+                                if (selected) {
+                                  selectedCategories.add(category);
+                                } else {
+                                  selectedCategories.remove(category);
+                                }
+                              });
+                            }),
+                      ))
+                  .toList(),
             ),
           ),
         ),
+        const Text("List of Items"),
+        Expanded(
+          child: ListView.builder(
+            itemCount: filterProducts.length,
+            itemBuilder: (context, index) {
+              final product = filterProducts[index];
+              return Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                          height: 150,
+                          width: 150,
+                          decoration: ShapeDecoration(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12)),
+                            color: Colors.grey,
+                          ),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Column(
+                                children: [
+                                  Image(
+                                      height: 70,
+                                      image:
+                                          AssetImage("assets/Image Icon.png")),
+                                ],
+                              ),
+                            ],
+                          )),
+                    ),
+                    Column(
+                      children: [Text(product.name), Text(product.category)],
+                    ),
+                  ]);
+            },
+          ),
+        )
       ]),
     );
   }
