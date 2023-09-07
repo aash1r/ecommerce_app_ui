@@ -31,6 +31,14 @@ class Data {
     ["\$69", "Mango deal 1", " Buy 1 get 1 free", Colors.grey]
   ];
 
+  static final List allcategories = [
+    "Fishes",
+    "Meats",
+    "Vegetables",
+    "Fruits",
+    "Chicken"
+  ];
+
   static final List<Map<String, String>> category = [
     {"name": "Fishes", "variants": "From Sea"},
     {"name": "Meats", "variants": "Organic"},
@@ -38,6 +46,26 @@ class Data {
     {"name": "Fruits", "variants": "Fresh & Organic"},
     {"name": "Chicken", "variants": "Fresh & Organic"},
   ];
+
+  static final meatnfish = [
+    {"name": "Big & Small Fishes", "type": "Meats & Fishes"},
+    {"name": "Halal Meats", "type": "Meats & Fishes"},
+    {"name": "Finger Fish", "type": "Meats & Fishes"},
+  ];
+  static final veges = [
+    {"name": "Tomato", "type": "Vegetables"},
+    {"name": "Potato", "type": "Vegetables"},
+  ];
+  static final fruits = [
+    {"name": "Mango", "type": "Fruits"},
+    {"name": "Orange", "type": "Fruits"},
+  ];
+
+  static final chick = [
+    {"name": "Fresh Chicken", "type": "Chicken"},
+  ];
+
+  static final allfoods = [meatnfish, meatnfish, veges, fruits, chick];
 }
 
 

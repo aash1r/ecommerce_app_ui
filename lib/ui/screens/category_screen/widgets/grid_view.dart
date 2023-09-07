@@ -25,7 +25,10 @@ class CustomGridView extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CategoryDetails(index: index),
+                      builder: (context) => CategoryDetails(
+                          select: product["name"] == Data.allcategories[index]
+                              ? Data.allfoods[index]
+                              : Data.meatnfish),
                     ));
               },
               child: Container(

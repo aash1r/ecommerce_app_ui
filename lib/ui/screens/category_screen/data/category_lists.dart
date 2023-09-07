@@ -3,6 +3,24 @@ class Product {
   final String category;
 
   Product({required this.name, required this.category});
+
+  static final List<String> categories = [
+    "Meats & Fishes",
+    "Vegetables",
+    "Fruits",
+    "Chicken"
+  ];
+
+  static final productNames = [
+    "Big and Small Fishes",
+    "Halal Meats",
+    "Finger Fish",
+    "Tomato",
+    "Potato",
+    "Mango",
+    "Orange",
+    "Fresh Chicken"
+  ];
 }
 
 final List<Product> productList = [
