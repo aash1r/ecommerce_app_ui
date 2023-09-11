@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smit_mini_project/ui/screens/category_screen/data/category_lists.dart';
-import 'package:smit_mini_project/ui/screens/category_screen/data/item_lists.dart';
+import 'package:smit_mini_project/data/category_data/category_lists.dart';
+import 'package:smit_mini_project/data/category_data/item_lists.dart';
 import 'package:smit_mini_project/ui/screens/category_screen/item_detail.dart';
 import 'package:smit_mini_project/ui/screens/category_screen/widgets/top_bar.dart';
+import 'package:smit_mini_project/data/food_data.dart';
 
 import '../food_detail_screen/food_details.dart';
 
@@ -21,7 +22,6 @@ class CategoryDetails extends StatefulWidget {
 }
 
 class _CategoryDetailsState extends State<CategoryDetails> {
-  
   final List<String> categories = [
     "Meats & Fishes",
     "Vegetables",
@@ -79,7 +79,6 @@ class _CategoryDetailsState extends State<CategoryDetails> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => ItemDetails(
-                          
                               selected: productList[index].name,
                               selectedCategory: productList[index].name ==
                                       Product.productNames[index]

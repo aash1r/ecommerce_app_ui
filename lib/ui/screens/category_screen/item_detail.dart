@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smit_mini_project/ui/screens/category_screen/data/item_lists.dart';
+import 'package:smit_mini_project/ui/screens/cart_screen/cart.dart';
+import 'package:smit_mini_project/data/category_data/item_lists.dart';
+import 'package:smit_mini_project/data/food_data.dart';
 
 import '../food_detail_screen/food_details.dart';
 
@@ -10,7 +12,7 @@ class ItemDetails extends StatefulWidget {
     this.selected,
     this.selectedCategory,
   });
-  
+
   final String? selected;
   final selectedCategory;
 
@@ -25,6 +27,8 @@ class _ItemDetailsState extends State<ItemDetails> {
     "Discounted",
     "Most Expensive"
   ];
+
+  final cartItems = [];
 
   List<String> selectedtype = [];
   @override
@@ -45,29 +49,18 @@ class _ItemDetailsState extends State<ItemDetails> {
                     const Icon(Icons.arrow_back_ios_new_outlined),
                     Text(widget.selected ?? ''),
                     const Icon(Icons.search),
-                    Stack(
-                      children: [
-                        const Icon(
-                          Icons.shopping_bag_outlined,
-                          color: Colors.grey,
-                          size: 24,
-                        ),
-                        Positioned(
-                          right: 0,
-                          child: CircleAvatar(
-                            backgroundColor: const Color(0xFFF9B023),
-                            radius: 6.5,
-                            child: Text(
-                              "3",
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.manrope(
-                                  color: Colors.white,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                          ),
-                        )
-                      ],
+                    GestureDetector(
+                      onTap: () async {
+                        await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const CartScreen()));
+                        setState(() {});
+                      },
+                      child: const Icon(
+                        Icons.shopping_cart_checkout_outlined,
+                        size: 24,
+                      ),
                     ),
                   ],
                 )),
@@ -110,12 +103,7 @@ class _ItemDetailsState extends State<ItemDetails> {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const FoodDetailsPage()));
-                      },
+                      onTap: () {},
                       child: Container(
                         height: 150,
                         width: 120,
@@ -135,7 +123,40 @@ class _ItemDetailsState extends State<ItemDetails> {
                               ],
                             ),
                             const SizedBox(
-                              height: 20,
+                              height: 10,
+                            ),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Row(
+                                children: [
+                                  Text(cartItems.length.toString()),
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  FoodDetailsPage(
+                                                    addCartItem: items,
+                                                  )));
+                                      // cartItems.add(
+                                      //     allProducts[index][index].toString());
+                                    },
+                                    child: const CircleAvatar(
+                                      backgroundColor: Colors.black54,
+                                      foregroundColor:
+                                          Color.fromARGB(255, 253, 250, 250),
+                                      radius: 15,
+                                      child: SizedBox(
+                                        child: Icon(
+                                          Icons.add,
+                                          size: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,

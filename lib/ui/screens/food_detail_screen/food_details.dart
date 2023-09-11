@@ -1,46 +1,205 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:smit_mini_project/data/category_data/item_lists.dart';
+import 'package:smit_mini_project/ui/screens/cart_screen/cart.dart';
 
 class FoodDetailsPage extends StatefulWidget {
-  const FoodDetailsPage({super.key, this.food});
+  const FoodDetailsPage({
+    required this.addCartItem,
+    super.key,
+  });
+  final Items addCartItem;
 
-  final food;
   @override
   State<FoodDetailsPage> createState() => _FoodDetailsPageState();
 }
 
 class _FoodDetailsPageState extends State<FoodDetailsPage> {
+  var quant = 0;
+
+  List cartItem = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
           Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: ListView(
-            children: const [
-              Center(
-                child: Image(
-                  color: Colors.black,
-                  image: AssetImage(
-                    "assets/Image Icon.png",
-                  ),
-                  height: 200,
-                ),
-              ),
-              SizedBox(
-                height: 25,
-              ),
-              Row(
                 children: [
-                  Icon(
-                    Icons.star,
-                    color: Colors.yellow,
+                  const Center(
+                    child: Image(
+                      color: Colors.black,
+                      image: AssetImage(
+                        "assets/Image Icon.png",
+                      ),
+                      height: 200,
+                    ),
                   ),
-                  SizedBox(height: 10),
-                  
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.star,
+                        color: Colors.yellow.shade800,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text(widget.addCartItem.name),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    widget.addCartItem.price,
+                    style: GoogleFonts.dmSerifDisplay(fontSize: 28),
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  Text(
+                    "Description",
+                    style: GoogleFonts.manrope(
+                        color: Colors.grey.shade900,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Savor the delicate, tender flesh of Clown Fish, expertly prepared to highlight its natural sweetness and succulence. Each bite is a journey into the vibrant hues of the ocean, with the fish's striking orange and white stripes echoing the beauty of the sea. Our chefs have mastered the art of enhancing the natural flavors while ensuring a buttery, melt-in-your-mouth texture.",
+                    style: TextStyle(
+                        color: Colors.grey.shade600, fontSize: 14, height: 2),
+                  )
                 ],
-              )
-            ],
-          ))
+              ),
+            ),
+          ),
+          Container(
+            color: const Color(0xFF2A4BA0),
+            child: Padding(
+              padding: const EdgeInsets.all(25),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "",
+                        style: GoogleFonts.manrope(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18),
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                shape: BoxShape.rectangle,
+                                color: const Color(0xFF2A4BA0),
+                                borderRadius: BorderRadius.circular(40)),
+                            child: IconButton(
+                              onPressed: () {
+                                {
+                                  setState(() {
+                                    cartItem.remove(widget.addCartItem);
+                                  });
+                                }
+                              },
+                              icon: const Icon(
+                                Icons.remove,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 40,
+                            child: Center(
+                              child: Text(
+                                // quant.toString(),
+                                cartItem.length.toString(),
+                                style: GoogleFonts.manrope(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                shape: BoxShape.rectangle,
+                                color: const Color(0xFF2A4BA0),
+                                borderRadius: BorderRadius.circular(40)),
+                            child: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  cartItem.add(widget.addCartItem);
+                                });
+                              },
+                              icon: const Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  Container(
+                    width: 800,
+                    height: 70,
+                    clipBehavior: Clip.antiAlias,
+                    decoration: ShapeDecoration(
+                      color: const Color.fromARGB(255, 167, 177, 202),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                    ),
+                    child: GestureDetector(
+                      onTap: () async {
+                        await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CartScreen(
+                                      products: cartItem,
+                                    )));
+                        setState(() {});
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Center(
+                            child: Text(
+                              "Add to Cart",
+                              style: GoogleFonts.manrope(color: Colors.white),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          const Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );

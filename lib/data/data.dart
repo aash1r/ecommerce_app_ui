@@ -70,21 +70,4 @@ class Data {
 
 
 
-  // final List<MapEntry<String, dynamic>> keyValuePairs =
-  //     myTitleMap.entries.toList();
-
-  // myTitleMap.forEach((key, value) {
-  //   print("$key, $value");
-
-
-    // final titlesList = [];
-
-    // for (var entry in myTitleMap.entries) {
-    //   titlesList.add(entry.key);
-    //   titlesList.add(entry.value);
-    // }
-    // for (var element in titlesList) {
-    //   print(element);
-    // }
-  
-
+ 
