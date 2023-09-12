@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Items {
-  final String price;
-  final String type;
-  final String name;
-  final String rating;
-  final double? quantity;
+  String price;
+  String type;
+  String name;
+  String rating;
+  int quantity;
 
   Items(
-      {this.quantity,
+      {this.quantity = 0,
       required this.price,
       required this.type,
       required this.name,
@@ -23,7 +23,7 @@ class Items {
 }
 
 final List _cart = [];
-List get _bignsmallfish => bignsmallfish;
+// List get _bignsmallfish => bignsmallfish;
 List get cart => _cart;
 
 void addToCart(foodItem, int quantity) {
@@ -42,7 +42,6 @@ final List<Items> bignsmallfish = [
     name: "Clown Fish",
     type: "Popular",
     rating: "4.9",
-    quantity: 0,
   ),
   Items(
     price: "21\$",
@@ -179,3 +178,7 @@ final allProducts = [
   orange,
   freshchick
 ];
+
+final cartItems = [];
+
+final favitems = [];

@@ -1,5 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:smit_mini_project/data/category_data/item_lists.dart';
 import 'package:smit_mini_project/ui/screens/favourites_screen/favourites.dart';
 import 'package:smit_mini_project/ui/screens/more_screen/more_details.dart';
 import '../main_screen.dart';
@@ -17,10 +18,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
   final screensWidgets = [
     const MainScreen(),
     const CategoriesScreen(),
-    const FavouritesScreen(),
+    FavouritesScreen(
+      favcart: favitems,
+    ),
     const MoreDetailsScreen(),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

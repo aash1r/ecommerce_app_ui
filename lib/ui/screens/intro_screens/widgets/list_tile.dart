@@ -4,11 +4,11 @@ class MyTitle extends StatelessWidget {
   const MyTitle(
       {super.key,
       required this.leadingWidget,
-      required this.trailingwidget,
+      this.trailingwidget,
       this.subleadingwidget});
 
   final Widget leadingWidget;
-  final Widget trailingwidget;
+  final Widget? trailingwidget;
   final Widget? subleadingwidget;
 
   @override

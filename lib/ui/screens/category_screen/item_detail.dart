@@ -28,8 +28,6 @@ class _ItemDetailsState extends State<ItemDetails> {
     "Most Expensive"
   ];
 
-  final cartItems = [];
-
   List<String> selectedtype = [];
   @override
   Widget build(BuildContext context) {
@@ -54,7 +52,10 @@ class _ItemDetailsState extends State<ItemDetails> {
                         await Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const CartScreen()));
+                                builder: (context) => CartScreen(
+                                      products: cartItems,
+                                      quant: 0,
+                                    )));
                         setState(() {});
                       },
                       child: const Icon(
@@ -129,7 +130,6 @@ class _ItemDetailsState extends State<ItemDetails> {
                               alignment: Alignment.centerRight,
                               child: Row(
                                 children: [
-                                  Text(cartItems.length.toString()),
                                   GestureDetector(
                                     onTap: () {
                                       Navigator.push(
@@ -142,12 +142,13 @@ class _ItemDetailsState extends State<ItemDetails> {
                                       // cartItems.add(
                                       //     allProducts[index][index].toString());
                                     },
-                                    child: const CircleAvatar(
-                                      backgroundColor: Colors.black54,
-                                      foregroundColor:
-                                          Color.fromARGB(255, 253, 250, 250),
-                                      radius: 15,
-                                      child: SizedBox(
+                                    child: Container(
+                                      padding: const EdgeInsets.only(left: 10),
+                                      child: const CircleAvatar(
+                                        backgroundColor: Color(0xFF2A4BA0),
+                                        foregroundColor:
+                                            Color.fromARGB(255, 253, 250, 250),
+                                        radius: 15,
                                         child: Icon(
                                           Icons.add,
                                           size: 20,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smit_mini_project/data/category_data/item_lists.dart';
 import 'package:smit_mini_project/ui/screens/cart_screen/cart.dart';
+import 'package:smit_mini_project/ui/screens/favourites_screen/favourites.dart';
 
 class FoodDetailsPage extends StatefulWidget {
   const FoodDetailsPage({
@@ -15,10 +16,7 @@ class FoodDetailsPage extends StatefulWidget {
 }
 
 class _FoodDetailsPageState extends State<FoodDetailsPage> {
-  var quant = 0;
-
-  List cartItem = [];
-
+  bool isFav = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +33,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                       image: AssetImage(
                         "assets/Image Icon.png",
                       ),
-                      height: 200,
+                      height: 180,
                     ),
                   ),
                   const SizedBox(
@@ -50,14 +48,121 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                       const SizedBox(
                         width: 10,
                       ),
-                      Text(widget.addCartItem.name),
+                      Text(widget.addCartItem.rating),
+                      const SizedBox(
+                        width: 200,
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          isFav ? Icons.favorite : Icons.favorite_outline,
+                          color: isFav ? Colors.red : Colors.black,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            isFav = !isFav;
+                          });
+                          if (isFav) {
+                            showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                      content: Text(
+                                        "Item has been added to favourites",
+                                        style:
+                                            GoogleFonts.manrope(fontSize: 15),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      actions: [
+                                        GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                favitems
+                                                    .add(widget.addCartItem);
+                                              });
+                                              Navigator.pop(context);
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          FavouritesScreen(
+                                                            favcart: favitems,
+                                                          )));
+                                            },
+                                            child: Container(
+                                              height: 22,
+                                              width: 130,
+                                              decoration: ShapeDecoration(
+                                                  color:
+                                                      const Color(0xFF2A4BA0),
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10))),
+                                              child: Text(
+                                                "View my favourites",
+                                                style: GoogleFonts.manrope(
+                                                    fontSize: 11,
+                                                    color: Colors.white),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ))
+                                      ],
+                                    ));
+                          } else {
+                            showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                      content: Text(
+                                        "Item has been removed to favourites",
+                                        style:
+                                            GoogleFonts.manrope(fontSize: 15),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      actions: [
+                                        GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                favitems
+                                                    .remove(widget.addCartItem);
+                                              });
+                                              Navigator.pop(context);
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          FavouritesScreen(
+                                                            favcart: favitems,
+                                                          )));
+                                            },
+                                            child: Container(
+                                              height: 22,
+                                              width: 130,
+                                              decoration: ShapeDecoration(
+                                                  color:
+                                                      const Color(0xFF2A4BA0),
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10))),
+                                              child: Text(
+                                                "View my favourites",
+                                                style: GoogleFonts.manrope(
+                                                    fontSize: 11,
+                                                    color: Colors.white),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ))
+                                      ],
+                                    ));
+                          }
+                        },
+                      ),
                     ],
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   Text(
-                    widget.addCartItem.price,
+                    widget.addCartItem.name,
                     style: GoogleFonts.dmSerifDisplay(fontSize: 28),
                   ),
                   const SizedBox(
@@ -92,7 +197,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "",
+                        widget.addCartItem.price,
                         style: GoogleFonts.manrope(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -108,9 +213,11 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                             child: IconButton(
                               onPressed: () {
                                 {
-                                  setState(() {
-                                    cartItem.remove(widget.addCartItem);
-                                  });
+                                  if (widget.addCartItem.quantity > 0) {
+                                    setState(() {
+                                      widget.addCartItem.quantity--;
+                                    });
+                                  }
                                 }
                               },
                               icon: const Icon(
@@ -124,7 +231,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                             child: Center(
                               child: Text(
                                 // quant.toString(),
-                                cartItem.length.toString(),
+                                widget.addCartItem.quantity.toString(),
                                 style: GoogleFonts.manrope(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -140,7 +247,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                             child: IconButton(
                               onPressed: () {
                                 setState(() {
-                                  cartItem.add(widget.addCartItem);
+                                  widget.addCartItem.quantity++;
                                 });
                               },
                               icon: const Icon(
@@ -168,13 +275,26 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                     ),
                     child: GestureDetector(
                       onTap: () async {
-                        await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CartScreen(
-                                      products: cartItem,
-                                    )));
-                        setState(() {});
+                        if (cartItems.contains(widget.addCartItem)) {
+                          await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CartScreen(
+                                        products: cartItems,
+                                        quant: widget.addCartItem.quantity,
+                                      )));
+                        } else {
+                          setState(() {
+                            cartItems.add(widget.addCartItem);
+                          });
+                          await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CartScreen(
+                                        products: cartItems,
+                                        quant: widget.addCartItem.quantity,
+                                      )));
+                        }
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
