@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smit_mini_project/data/category_data/item_lists.dart';
+import 'package:smit_mini_project/ui/screens/cart_screen/cart.dart';
 
 import '../../intro_screens/widgets/list_tile.dart';
 
-class MainScreenBar extends StatelessWidget {
+class MainScreenBar extends StatefulWidget {
   const MainScreenBar({super.key});
+
+  @override
+  State<MainScreenBar> createState() => _MainScreenBarState();
+}
+
+class _MainScreenBarState extends State<MainScreenBar> {
+  List listitem = ["1 Hour", "2 Hour", "3 Hour"];
+  String? valueChoose;
+
+  List listaddress = ["Bahadurabad", "Nazimabad", "Tariq Road"];
+  String? valueChoice;
 
   @override
   Widget build(BuildContext context) {
@@ -15,35 +28,27 @@ class MainScreenBar extends StatelessWidget {
         children: [
           MyTitle(
             leadingWidget: Text(
-              'Hey, Hilal',
+              'Hey, Aashir',
               style: GoogleFonts.manrope(
                   fontSize: 22,
                   color: Colors.white,
                   fontWeight: FontWeight.w600),
             ),
-            trailingwidget: Stack(
-              children: [
-                const Icon(
-                  Icons.shopping_bag_outlined,
-                  color: Colors.white,
-                  size: 24,
-                ),
-                Positioned(
-                  right: 0,
-                  child: CircleAvatar(
-                    backgroundColor: const Color(0xFFF9B023),
-                    radius: 6.5,
-                    child: Text(
-                      "3",
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.manrope(
-                          color: Colors.white,
-                          fontSize: 10,
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ),
-                )
-              ],
+            trailingwidget: GestureDetector(
+              onTap: () async {
+                await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CartScreen(
+                              products: cartItems,
+                            )));
+                setState(() {});
+              },
+              child: const Icon(
+                Icons.shopping_cart_checkout_outlined,
+                color: Colors.white,
+                size: 24,
+              ),
             ),
           ),
           Padding(
@@ -71,37 +76,64 @@ class MainScreenBar extends StatelessWidget {
                   ),
                 ),
               )),
-          MyTitle(
-            leadingWidget: const Opacity(
-              opacity: 0.50,
-              child: Text(
-                "DELIVERY TO",
-                style: TextStyle(
-                  color: Color(0xFFF7F8FA),
-                  fontSize: 11,
-                  fontFamily: 'Manrope',
-                  fontWeight: FontWeight.w800,
+          Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: DropdownButton(
+                      hint: Text(
+                        "DELIVERY TO",
+                        style: GoogleFonts.manrope(
+                            fontSize: 12, color: Colors.white),
+                      ),
+                      icon: const Icon(Icons.arrow_drop_down),
+                      style: GoogleFonts.manrope(
+                          fontSize: 12, color: Colors.black),
+                      value: valueChoice,
+                      items: listaddress.map((valueItem) {
+                        return DropdownMenuItem(
+                            value: valueItem,
+                            child: Text(
+                              valueItem,
+                            ));
+                      }).toList(),
+                      onChanged: (newvalue) {
+                        setState(() {
+                          valueChoice = newvalue as String?;
+                        });
+                      }),
                 ),
               ),
-            ),
-            trailingwidget: Text(
-              'WITHIN\nOne Hour',
-              style: GoogleFonts.manrope(
-                  fontSize: 14,
-                  color: const Color(0xFFF7F8FA),
-                  fontWeight: FontWeight.w500),
-            ),
-            subleadingwidget: Align(
-              alignment: const Alignment(-11, 0),
-              child: Text(
-                'Green way 3000,sylhet',
-                style: GoogleFonts.manrope(
-                    fontSize: 14,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500),
+              const SizedBox(
+                width: 80,
               ),
-            ),
-          ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: DropdownButton(
+                      hint: Text(
+                        "WITHIN",
+                        style: GoogleFonts.manrope(
+                            fontSize: 12, color: Colors.white),
+                      ),
+                      icon: const Icon(Icons.arrow_drop_down),
+                      style: GoogleFonts.manrope(
+                          fontSize: 12, color: Colors.black),
+                      value: valueChoose,
+                      items: listitem.map((valueItem) {
+                        return DropdownMenuItem(
+                            value: valueItem, child: Text(valueItem));
+                      }).toList(),
+                      onChanged: (newvalue) {
+                        setState(() {
+                          valueChoose = newvalue as String?;
+                        });
+                      }),
+                ),
+              )
+            ],
+          )
         ],
       ),
     );

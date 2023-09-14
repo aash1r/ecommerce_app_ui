@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smit_mini_project/ui/screens/food_detail_screen/food_details.dart';
 
 import '../../../../data/data.dart';
 
-class ProductsContainer extends StatelessWidget {
+class ProductsContainer extends StatefulWidget {
   const ProductsContainer({super.key});
 
+  @override
+  State<ProductsContainer> createState() => _ProductsContainerState();
+}
+
+class _ProductsContainerState extends State<ProductsContainer> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -17,6 +23,8 @@ class ProductsContainer extends StatelessWidget {
         itemCount: Data.items.length,
         itemBuilder: (context, index) {
           final product = Data.items[index];
+          final dataProduct = dataItems[index];
+
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -25,7 +33,7 @@ class ProductsContainer extends StatelessWidget {
               decoration: ShapeDecoration(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12)),
-                color: Colors.grey,
+                color: const Color.fromARGB(255, 239, 239, 239),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -39,6 +47,38 @@ class ProductsContainer extends StatelessWidget {
                   ),
                   const SizedBox(
                     height: 20,
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => FoodDetailsPage(
+                                          addCartItem: dataProduct,
+                                        )));
+                            // cartItems.add(
+                            //     allProducts[index][index].toString());
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: const CircleAvatar(
+                              backgroundColor: Color(0xFF2A4BA0),
+                              foregroundColor:
+                                  Color.fromARGB(255, 253, 250, 250),
+                              radius: 15,
+                              child: Icon(
+                                Icons.add,
+                                size: 20,
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,

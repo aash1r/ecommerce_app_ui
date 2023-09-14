@@ -37,7 +37,7 @@ class CustomGridView extends StatelessWidget {
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12)),
-                  color: Colors.grey,
+                  color: const Color.fromARGB(255, 239, 239, 239),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

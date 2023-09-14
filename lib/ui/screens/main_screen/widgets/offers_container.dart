@@ -36,7 +36,7 @@ class OffersContainer extends StatelessWidget {
                       child: Image(
                           height: 68,
                           width: 68,
-                          image: AssetImage("assets/Image Icon.png")),
+                          image: AssetImage("assets/offer.png")),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),

@@ -28,9 +28,13 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
                     itemCount: widget.favcart.length,
                     itemBuilder: (context, index) {
                       return ListTile(
-                        tileColor: Colors.grey,
-                        title: Text(widget.favcart?[index].name),
-                        subtitle: Text(widget.favcart?[index].price),
+                        tileColor: Colors.transparent,
+                        title: Text(
+                          widget.favcart?[index].name,
+                          style:
+                              GoogleFonts.manrope(fontWeight: FontWeight.w800),
+                        ),
+                        subtitle: Text("\$${widget.favcart?[index].price}"),
                         trailing: IconButton(
                           icon: const Icon(Icons.remove),
                           onPressed: () {

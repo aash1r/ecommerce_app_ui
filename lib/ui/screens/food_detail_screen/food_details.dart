@@ -8,8 +8,10 @@ class FoodDetailsPage extends StatefulWidget {
   const FoodDetailsPage({
     required this.addCartItem,
     super.key,
+    this.addCartdeals,
   });
-  final Items addCartItem;
+  final addCartItem;
+  final addCartdeals;
 
   @override
   State<FoodDetailsPage> createState() => _FoodDetailsPageState();
@@ -112,7 +114,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                                 context: context,
                                 builder: (context) => AlertDialog(
                                       content: Text(
-                                        "Item has been removed to favourites",
+                                        "Item has been removed from the favourites",
                                         style:
                                             GoogleFonts.manrope(fontSize: 15),
                                         textAlign: TextAlign.center,
@@ -197,7 +199,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        widget.addCartItem.price,
+                        "\$${widget.addCartItem.price.toStringAsFixed(2)}",
                         style: GoogleFonts.manrope(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -274,27 +276,27 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                       ),
                     ),
                     child: GestureDetector(
-                      onTap: () {
+                      onTap: () async {
                         if (cartItems.contains(widget.addCartItem)) {
-                          Navigator.push(
+                          await Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => CartScreen(
                                         products: cartItems,
-                                        quant: widget.addCartItem,
                                       )));
+                          setState(() {});
                         } else {
                           setState(() {
                             cartItems.add(widget.addCartItem);
                           });
-                          Navigator.push(
+                          await Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => CartScreen(
                                   products: cartItems,
-                                  quant: widget.addCartItem,
                                 ),
                               ));
+                          setState(() {});
                         }
                       },
                       child: Row(

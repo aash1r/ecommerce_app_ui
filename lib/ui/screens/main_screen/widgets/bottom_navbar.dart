@@ -21,7 +21,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
     FavouritesScreen(
       favcart: favitems,
     ),
-    const OrdersScreen(),
+    OrdersScreen(
+      products: cartItems,
+    ),
   ];
   @override
   Widget build(BuildContext context) {

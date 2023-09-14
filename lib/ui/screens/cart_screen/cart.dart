@@ -3,12 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smit_mini_project/data/category_data/item_lists.dart';
 import 'package:smit_mini_project/ui/screens/checkout_screen/checkout_screen.dart';
 import 'package:smit_mini_project/ui/screens/intro_screens/widgets/list_tile.dart';
+import 'package:smit_mini_project/widgets/custom_calculation.dart';
 import 'package:smit_mini_project/widgets/custom_checkout_button.dart';
 
 class CartScreen extends StatefulWidget {
-  const CartScreen({super.key, this.products, this.quant});
+  const CartScreen({super.key, this.products, });
   final List<dynamic>? products;
-  final Items? quant;
+  
   @override
   State<CartScreen> createState() => _CartScreenState();
 }
@@ -73,24 +74,26 @@ class _CartScreenState extends State<CartScreen> {
                           style:
                               GoogleFonts.manrope(fontWeight: FontWeight.w800),
                         ),
-                        subtitle: Text(widget.products?[index].price),
+                        subtitle: Text("\$${widget.products?[index].price}"),
                         // trailing: Text("Quantity: ${item.quantity}"),
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Text(widget.quant?.quantity.toString() ?? '0'),
+                            Text(
+                                "${widget.products?[index].quantity.toString()}x"),
                             IconButton(
                               icon: const Icon(Icons.remove),
                               onPressed: () {
                                 // print(widget.products?.map((hi) => hi.name));
                                 setState(() {
-                                  if (widget.quant?.quantity != null) {
-                                    if (widget.quant!.quantity > 0) {
-                                      widget.quant!.quantity--;
+                                  if (widget.products?[index].quantity !=
+                                      null) {
+                                    if (widget.products?[index].quantity > 0) {
+                                      widget.products?[index].quantity--;
                                     }
                                     // ignore: unrelated_type_equality_checks
-                                    if (widget.quant == 0) {
+                                    if (widget.products?[index].quantity == 0) {
                                       widget.products?.removeAt(index);
                                     }
                                   }
@@ -103,6 +106,7 @@ class _CartScreenState extends State<CartScreen> {
                     },
                   ),
           ),
+          CustomCalculation(products: cartItems),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
@@ -110,7 +114,8 @@ class _CartScreenState extends State<CartScreen> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const CheckoutScreen()));
+                        builder: (context) =>
+                            CheckoutScreen(products: cartItems)));
               },
               child: const CustomButton(
                 color: Color(0xFF2A4BA0),

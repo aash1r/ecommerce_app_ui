@@ -5,7 +5,6 @@ import 'package:smit_mini_project/data/category_data/item_lists.dart';
 import 'package:smit_mini_project/ui/screens/category_screen/item_detail.dart';
 import 'package:smit_mini_project/ui/screens/category_screen/widgets/top_bar.dart';
 
-
 class CategoryDetails extends StatefulWidget {
   const CategoryDetails({
     this.index,
@@ -98,7 +97,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
                             decoration: ShapeDecoration(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12)),
-                              color: Colors.grey,
+                              color: const Color.fromARGB(255, 239, 239, 239),
                             ),
                             child: const Column(
                               mainAxisAlignment: MainAxisAlignment.center,

@@ -70,6 +70,9 @@ flutter:
     - assets\Image Icon.png
     - assets\Emoji.png 
     - assets\animation.json
+    - assets\offer.png
+    - assets\map.png
+    - assets\fresh_lemon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
