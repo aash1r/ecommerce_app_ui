@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smit_mini_project/data/category_data/category_lists.dart';
+import 'package:smit_mini_project/data/category_data/item_lists.dart';
 import 'package:smit_mini_project/ui/screens/checkout_screen/checkout_screen.dart';
 import 'package:smit_mini_project/ui/screens/intro_screens/widgets/list_tile.dart';
+import 'package:smit_mini_project/widgets/custom_checkout_button.dart';
 
 class CartScreen extends StatefulWidget {
-  CartScreen({super.key, this.products, required this.quant});
+  const CartScreen({super.key, this.products, this.quant});
   final List<dynamic>? products;
-  int quant;
+  final Items? quant;
   @override
   State<CartScreen> createState() => _CartScreenState();
 }
@@ -79,17 +79,20 @@ class _CartScreenState extends State<CartScreen> {
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Text(widget.quant.toString()),
+                            Text(widget.quant?.quantity.toString() ?? '0'),
                             IconButton(
                               icon: const Icon(Icons.remove),
                               onPressed: () {
-                                print(widget.products?.map((hi) => hi.name));
+                                // print(widget.products?.map((hi) => hi.name));
                                 setState(() {
-                                  if (widget.quant > 0) {
-                                    widget.quant--;
-                                  }
-                                  if (widget.quant < 0) {
-                                    widget.products?.removeAt(index);
+                                  if (widget.quant?.quantity != null) {
+                                    if (widget.quant!.quantity > 0) {
+                                      widget.quant!.quantity--;
+                                    }
+                                    // ignore: unrelated_type_equality_checks
+                                    if (widget.quant == 0) {
+                                      widget.products?.removeAt(index);
+                                    }
                                   }
                                 });
                               },
@@ -109,22 +112,9 @@ class _CartScreenState extends State<CartScreen> {
                     MaterialPageRoute(
                         builder: (context) => const CheckoutScreen()));
               },
-              child: Container(
-                width: 327,
-                height: 80,
-                decoration: ShapeDecoration(
-                  color: const Color(0xFF2A4BA0),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-                child: Center(
-                  child: Text(
-                    "Proceed to checkout",
-                    style:
-                        GoogleFonts.manrope(fontSize: 16, color: Colors.white),
-                  ),
-                ),
+              child: const CustomButton(
+                color: Color(0xFF2A4BA0),
+                text: "Proceed to Checkout",
               ),
             ),
           )

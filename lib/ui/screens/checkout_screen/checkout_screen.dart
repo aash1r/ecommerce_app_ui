@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smit_mini_project/data/user.dart';
+import 'package:smit_mini_project/ui/screens/checkout_screen/addcard_screen.dart';
+import 'package:smit_mini_project/widgets/custom_checkout_button.dart';
 
 class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key});
@@ -13,22 +15,40 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   final _textController = TextEditingController();
   final _textController1 = TextEditingController();
   final newUser = User();
+  bool _isTextFieldEmpty = true;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Listen for changes in the text field's content
+    _textController.addListener(_textFieldListener);
+    _textController1.addListener(_textFieldListener);
+  }
+
+  void _textFieldListener() {
+    // Check if the text field is empty
+    setState(() {
+      _isTextFieldEmpty = _textController.text.isEmpty;
+      _isTextFieldEmpty = _textController1.text.isEmpty;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        foregroundColor: Colors.black,
         title: Text(
           "Checkout",
-          style: GoogleFonts.manrope(color: Colors.black),
+          style: GoogleFonts.manrope(color: Colors.white),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: const Color(0xFF2A4BA0),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox(
-            height: 100,
+            height: 10,
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -89,6 +109,31 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             ),
           ),
           Text(newUser.address.toString()),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GestureDetector(
+                onTap: _isTextFieldEmpty
+                    ? null
+                    : () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const AddCardScreen()));
+                      },
+                child: Expanded(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      CustomButton(
+                        text: "Add Card",
+                        color: _isTextFieldEmpty
+                            ? Colors.grey
+                            : const Color(0xFF2A4BA0),
+                      ),
+                    ],
+                  ),
+                )),
+          ),
         ],
       ),
     );

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smit_mini_project/ui/screens/cart_screen/cart.dart';
 import 'package:smit_mini_project/data/category_data/item_lists.dart';
-import 'package:smit_mini_project/data/food_data.dart';
 
 import '../food_detail_screen/food_details.dart';
 
@@ -14,6 +13,7 @@ class ItemDetails extends StatefulWidget {
   });
 
   final String? selected;
+  // ignore: prefer_typing_uninitialized_variables
   final selectedCategory;
 
   @override
@@ -54,7 +54,6 @@ class _ItemDetailsState extends State<ItemDetails> {
                             MaterialPageRoute(
                                 builder: (context) => CartScreen(
                                       products: cartItems,
-                                      quant: 0,
                                     )));
                         setState(() {});
                       },

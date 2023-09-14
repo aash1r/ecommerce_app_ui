@@ -4,9 +4,7 @@ import 'package:smit_mini_project/data/category_data/category_lists.dart';
 import 'package:smit_mini_project/data/category_data/item_lists.dart';
 import 'package:smit_mini_project/ui/screens/category_screen/item_detail.dart';
 import 'package:smit_mini_project/ui/screens/category_screen/widgets/top_bar.dart';
-import 'package:smit_mini_project/data/food_data.dart';
 
-import '../food_detail_screen/food_details.dart';
 
 class CategoryDetails extends StatefulWidget {
   const CategoryDetails({
@@ -14,6 +12,7 @@ class CategoryDetails extends StatefulWidget {
     this.select,
     super.key,
   });
+  // ignore: prefer_typing_uninitialized_variables
   final select;
   final int? index;
 

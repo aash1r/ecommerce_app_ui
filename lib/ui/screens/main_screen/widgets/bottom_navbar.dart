@@ -2,7 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:smit_mini_project/data/category_data/item_lists.dart';
 import 'package:smit_mini_project/ui/screens/favourites_screen/favourites.dart';
-import 'package:smit_mini_project/ui/screens/more_screen/more_details.dart';
+import 'package:smit_mini_project/ui/screens/orders_screen/orders_screen.dart';
 import '../main_screen.dart';
 import '../../category_screen/category.dart';
 
@@ -21,7 +21,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     FavouritesScreen(
       favcart: favitems,
     ),
-    const MoreDetailsScreen(),
+    const OrdersScreen(),
   ];
   @override
   Widget build(BuildContext context) {

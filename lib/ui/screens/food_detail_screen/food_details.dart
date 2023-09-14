@@ -274,26 +274,27 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                       ),
                     ),
                     child: GestureDetector(
-                      onTap: () async {
+                      onTap: () {
                         if (cartItems.contains(widget.addCartItem)) {
-                          await Navigator.push(
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => CartScreen(
                                         products: cartItems,
-                                        quant: widget.addCartItem.quantity,
+                                        quant: widget.addCartItem,
                                       )));
                         } else {
                           setState(() {
                             cartItems.add(widget.addCartItem);
                           });
-                          await Navigator.push(
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => CartScreen(
-                                        products: cartItems,
-                                        quant: widget.addCartItem.quantity,
-                                      )));
+                                builder: (context) => CartScreen(
+                                  products: cartItems,
+                                  quant: widget.addCartItem,
+                                ),
+                              ));
                         }
                       },
                       child: Row(
