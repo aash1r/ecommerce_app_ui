@@ -38,61 +38,62 @@ class DealsContainer extends StatelessWidget {
                           image: AssetImage(Data.deals[index][4].toString())),
                     ],
                   ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Row(
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => FoodDetailsPage(
-                                          addCartItem: datadeals,
-                                          
-                                        )));
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: const CircleAvatar(
-                              backgroundColor: Color(0xFF2A4BA0),
-                              foregroundColor:
-                                  Color.fromARGB(255, 253, 250, 250),
-                              radius: 15,
-                              child: Icon(
-                                Icons.add,
-                                size: 20,
-                              ),
+                  // const SizedBox(
+                  //   height: 5,
+                  // ),
+                  Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => FoodDetailsPage(
+                                        addCartItem: datadeals,
+                                      )));
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: const CircleAvatar(
+                            backgroundColor: Color(0xFF2A4BA0),
+                            foregroundColor: Color.fromARGB(255, 253, 250, 250),
+                            radius: 15,
+                            child: Icon(
+                              Icons.add,
+                              size: 20,
                             ),
                           ),
-                        )
-                      ],
-                    ),
+                        ),
+                      )
+                    ],
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        Data.deals[index][0].toString(),
-                        style: GoogleFonts.manrope(
+                      Center(
+                        child: Text(
+                          Data.deals[index][0].toString(),
+                          style: GoogleFonts.manrope(
                             color: const Color(0xFF1E222B),
                             fontWeight: FontWeight.bold,
                             fontSize: 14,
-                            height: 1.43),
+                          ),
+                        ),
                       ),
-                      Text(
-                        Data.deals[index][1].toString(),
-                        style:
-                            GoogleFonts.manrope(color: const Color(0xFF61697C)),
+                      Center(
+                        child: Text(
+                          Data.deals[index][1].toString(),
+                          style: GoogleFonts.manrope(
+                              color: const Color(0xFF61697C)),
+                        ),
                       ),
-                      Text(
-                        Data.deals[index][2].toString(),
-                        style:
-                            GoogleFonts.manrope(color: const Color(0xFF61697C)),
+                      Center(
+                        child: Text(
+                          Data.deals[index][2].toString(),
+                          style: GoogleFonts.manrope(
+                              color: const Color(0xFF61697C)),
+                        ),
                       ),
                     ],
                   ),

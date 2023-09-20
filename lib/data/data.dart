@@ -27,16 +27,22 @@ class Data {
       '\n50% OFF',
       "\nOn first 03 orders",
       const Color(0xFFF9B023),
-      const Image(image: AssetImage("assets/offer.png"))
+      const Image(image: AssetImage("assets/specialoffer.json"))
     ],
     [
       'Massive',
       "\nSavings",
       "\nAhead",
       const Color(0xFF2A4BA0),
-      const Image(image: AssetImage("assets/offer.png"))
+      const Image(image: AssetImage("assets/specialoffer.json"))
     ],
-    ['Unbeatable', '\nBargains', "\nAwait", const Color(0xFFF9B023)],
+    [
+      'Unbeatable',
+      '\nBargains',
+      "\nAwait",
+      const Color(0xFFF9B023),
+      const Image(image: AssetImage("assets/specialoffer.json"))
+    ],
   ];
 
   static final List<Map<String, String>> items = [
@@ -188,10 +194,11 @@ final List<Data> itemdeals = [
     image: "assets/green_pckg.png",
   ),
   Data(
-      name: "Mango deal 1",
-      price: 69,
-      rating: "3.7",
-      type: "Discounted",
-      quantity: 0,
-      image: "assets/mango_deal.png",)
+    name: "Mango deal 1",
+    price: 69,
+    rating: "3.7",
+    type: "Discounted",
+    quantity: 0,
+    image: "assets/mango_deal.png",
+  )
 ];

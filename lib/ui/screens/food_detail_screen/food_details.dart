@@ -64,10 +64,15 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                             showDialog(
                                 context: context,
                                 builder: (context) => AlertDialog(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      backgroundColor: Colors.white,
                                       content: Text(
                                         "Item has been added to favourites",
-                                        style:
-                                            GoogleFonts.manrope(fontSize: 15),
+                                        style: GoogleFonts.manrope(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold),
                                         textAlign: TextAlign.center,
                                       ),
                                       actions: [
@@ -87,7 +92,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                                                           )));
                                             },
                                             child: Container(
-                                              height: 22,
+                                              height: 25,
                                               width: 130,
                                               decoration: ShapeDecoration(
                                                   color:
@@ -96,12 +101,14 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               10))),
-                                              child: Text(
-                                                "View my favourites",
-                                                style: GoogleFonts.manrope(
-                                                    fontSize: 11,
-                                                    color: Colors.white),
-                                                textAlign: TextAlign.center,
+                                              child: Center(
+                                                child: Text(
+                                                  "View my favourites",
+                                                  style: GoogleFonts.manrope(
+                                                      fontSize: 12,
+                                                      color: Colors.white),
+                                                  textAlign: TextAlign.center,
+                                                ),
                                               ),
                                             ))
                                       ],
@@ -112,8 +119,9 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                                 builder: (context) => AlertDialog(
                                       content: Text(
                                         "Item has been removed from the favourites",
-                                        style:
-                                            GoogleFonts.manrope(fontSize: 15),
+                                        style: GoogleFonts.manrope(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold),
                                         textAlign: TextAlign.center,
                                       ),
                                       actions: [
@@ -142,12 +150,14 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               10))),
-                                              child: Text(
-                                                "View my favourites",
-                                                style: GoogleFonts.manrope(
-                                                    fontSize: 11,
-                                                    color: Colors.white),
-                                                textAlign: TextAlign.center,
+                                              child: Center(
+                                                child: Text(
+                                                  "View my favourites",
+                                                  style: GoogleFonts.manrope(
+                                                      fontSize: 12,
+                                                      color: Colors.white),
+                                                  textAlign: TextAlign.center,
+                                                ),
                                               ),
                                             ))
                                       ],
@@ -178,7 +188,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                     height: 10,
                   ),
                   Text(
-                    "Savor the delicate, tender flesh of Clown Fish, expertly prepared to highlight its natural sweetness and succulence. Each bite is a journey into the vibrant hues of the ocean, with the fish's striking orange and white stripes echoing the beauty of the sea. Our chefs have mastered the art of enhancing the natural flavors while ensuring a buttery, melt-in-your-mouth texture.",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante id elit cursus convallis. Vivamus consequat interdum est, a convallis elit tincidunt non. Proin id ex vel tortor cursus blandit. Sed cursus, neque at suscipit vulputate, elit sapien congue urna, eu tincidunt quam risus sed tellus. Duis aliquam elit quis laoreet tincidunt. Suspendisse potenti. Nulla facilisi. ",
                     style: TextStyle(
                         color: Colors.grey.shade600, fontSize: 14, height: 2),
                   )

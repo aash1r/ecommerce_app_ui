@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../../data/data.dart';
 
@@ -31,12 +32,16 @@ class OffersContainer extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(left: 6, top: 20, bottom: 14),
-                      child: Image(
-                          height: 68,
-                          width: 68,
-                          image: AssetImage("assets/offer.png")),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 6, top: 20, bottom: 14),
+                      child: LottieBuilder.asset(
+                        "assets/specialoffer.json",
+                        height: 120,
+                        reverse: true,
+                        repeat: true,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
@@ -49,7 +54,9 @@ class OffersContainer extends StatelessWidget {
                               TextSpan(
                                 text: Data.parentoffers[index][0].toString(),
                                 style: GoogleFonts.manrope(
-                                    color: Colors.white, fontSize: 20),
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600),
                               ),
                               TextSpan(
                                   text: Data.parentoffers[index][1].toString(),
@@ -57,8 +64,10 @@ class OffersContainer extends StatelessWidget {
                                       fontWeight: FontWeight.bold,
                                       fontSize: 26)),
                               TextSpan(
-                                text: Data.parentoffers[index][2].toString(),
-                              )
+                                  text: Data.parentoffers[index][2].toString(),
+                                  style: GoogleFonts.manrope(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15))
                             ])),
                           ],
                         ),

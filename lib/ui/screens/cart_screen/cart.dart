@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:smit_mini_project/data/category_data/item_lists.dart';
 import 'package:smit_mini_project/ui/screens/checkout_screen/checkout_screen.dart';
 import 'package:smit_mini_project/ui/screens/intro_screens/widgets/list_tile.dart';
@@ -7,9 +8,12 @@ import 'package:smit_mini_project/widgets/custom_calculation.dart';
 import 'package:smit_mini_project/widgets/custom_checkout_button.dart';
 
 class CartScreen extends StatefulWidget {
-  const CartScreen({super.key, this.products, });
+  const CartScreen({
+    super.key,
+    this.products,
+  });
   final List<dynamic>? products;
-  
+
   @override
   State<CartScreen> createState() => _CartScreenState();
 }
@@ -63,7 +67,24 @@ class _CartScreenState extends State<CartScreen> {
           ),
           Expanded(
             child: isNew
-                ? const Center(child: Text("No items to display"))
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      LottieBuilder.asset(
+                        "assets/empty.json",
+                        height: 250,
+                        reverse: true,
+                        repeat: true,
+                        fit: BoxFit.cover,
+                      ),
+                      Center(
+                          child: Text(
+                        "Your Cart is Empty :(",
+                        style: GoogleFonts.manrope(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      )),
+                    ],
+                  )
                 : ListView.builder(
                     itemCount: widget.products?.length,
                     itemBuilder: (context, index) {

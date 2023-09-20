@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
+import 'package:smit_mini_project/ui/screens/main_screen/widgets/bottom_navbar.dart';
 import 'package:smit_mini_project/ui/screens/tracking_sreen/track_order.dart';
 
 class OrdersScreen extends StatefulWidget {
@@ -26,7 +28,61 @@ class _OrdersScreenState extends State<OrdersScreen> {
         ),
       ),
       body: isNew
-          ? const Center(child: Text("No items to display"))
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                LottieBuilder.asset(
+                  "assets/empty.json",
+                  height: 250,
+                  reverse: true,
+                  repeat: true,
+                  fit: BoxFit.cover,
+                ),
+                Center(
+                    child: Text(
+                  "Your Cart is Empty",
+                  style: GoogleFonts.manrope(
+                      fontWeight: FontWeight.bold, fontSize: 16),
+                )),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                      child: Text(
+                    "Looks like you haven't ordered anything!",
+                    style: GoogleFonts.manrope(
+                        fontWeight: FontWeight.w500, fontSize: 13),
+                  )),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 50),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const BottomNavBar()));
+                    },
+                    child: Container(
+                      width: 200,
+                      height: 60,
+                      decoration: ShapeDecoration(
+                        color: const Color(0xFF2A4BA0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Browse Now",
+                          style: GoogleFonts.manrope(
+                              fontSize: 16, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
           : Column(
               children: [
                 Expanded(

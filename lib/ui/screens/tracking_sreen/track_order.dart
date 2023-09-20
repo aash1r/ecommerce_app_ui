@@ -26,22 +26,34 @@ class TrackOrder extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          Row(
-            children: [
-              Text(formattedDate,
-                  style: GoogleFonts.libreBaskerville(fontSize: 18)),
-            ],
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Text(formattedDate, style: GoogleFonts.manrope(fontSize: 18)),
+              ],
+            ),
           ),
           const SizedBox(
-            height: 5,
+            height: 20,
           ),
-          Row(
-            children: [
-              Text("Delivery Address: ${userCheckoutDetails["Home Address"]}"),
-              Text("${userCheckoutDetails["Name"]}"),
-              Text("${userCheckoutDetails["Card Number"]}"),
-            ],
-          )
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+            child: Row(
+              children: [
+                Text("Delivery Address: ",
+                    style: GoogleFonts.manrope(
+                        fontSize: 14, fontWeight: FontWeight.bold)),
+                // Text("${userCheckoutDetails["Name  "]}"),
+                // Text("${userCheckoutDetails["Card Number"]}"),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child:
+                Row(children: [Text("${userCheckoutDetails["Home Address"]}")]),
+          ),
         ]));
   }
 }

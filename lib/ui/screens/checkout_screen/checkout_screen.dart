@@ -49,6 +49,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
               height: 10,
@@ -57,7 +58,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Delivery Address",
-                style: GoogleFonts.manrope(fontSize: 16),
+                style: GoogleFonts.manrope(
+                    fontSize: 16, fontWeight: FontWeight.bold),
               ),
             ),
             Column(
@@ -69,7 +71,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       setState(() {
                         userCheckoutDetails['Home Address'] = val;
                       });
-                      
                     },
                     autofocus: true,
                     controller: textController,
@@ -99,7 +100,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       setState(() {
                         userCheckoutDetails['Office Address'] = val;
                       });
-                      
                     },
                     autofocus: true,
                     controller: textController1,
@@ -115,8 +115,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         suffixIcon: IconButton(
                             onPressed: () {
                               setState(() {
-                                newUser.address = textController.text;
-                                newUser.officeAddress = textController1.text;
+                                // newUser.address = textController.text;
+                                // newUser.officeAddress = textController1.text;
                               });
                               textController1.clear();
                             },
@@ -131,14 +131,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             ),
             const SizedBox(
               height: 20,
-            ),
-            Center(
-              child: Container(
-                decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10))),
-                child: const Text("Add New Address"),
-              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 210),
