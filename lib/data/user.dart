@@ -7,3 +7,11 @@ class User {
     this.officeAddress,
   });
 }
+
+Map<String, dynamic> userCheckoutDetails = {
+  'Home Address': '',
+  'Office Address': '',
+  "Name":"",
+  "Card Number":"",
+
+};

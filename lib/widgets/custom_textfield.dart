@@ -7,7 +7,9 @@ class CustomTextField extends StatefulWidget {
       this.hint,
       this.length,
       this.input,
-      this.textController});
+      this.textController,
+      this.onChanged});
+  final Function(dynamic val)? onChanged;
   final String? label;
   final String? hint;
   final int? length;
@@ -41,7 +43,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
               onPressed: () {
                 widget.textController?.clear();
               },
-              icon: const Icon(Icons.clear_outlined,color: Colors.black,)),
+              icon: const Icon(
+                Icons.clear_outlined,
+                color: Colors.black,
+              )),
         ),
       ),
     );

@@ -5,13 +5,10 @@ class Items {
   String? name;
   String? rating;
   int? quantity;
+  String? image;
 
   Items(
-      { this.quantity,
-       this.price,
-       this.type,
-       this.name,
-       this.rating});
+      {this.quantity, this.price, this.type, this.name, this.rating, this.image});
 
   static final List<String> typeof = [
     "Popular",
@@ -26,8 +23,9 @@ final List<Items> bignsmallfish = [
     price: 32,
     name: "Clown Fish",
     type: "Popular",
-    rating: "4.9",
     quantity: 0,
+    rating: "4.9",
+    image: "assets/clownfish.png",
   ),
   Items(
     price: 21,
@@ -35,6 +33,7 @@ final List<Items> bignsmallfish = [
     type: "Popular",
     rating: "5.0",
     quantity: 0,
+    image: "assets/surmaifish.png"
   ),
   Items(
     price: 52,
@@ -42,6 +41,7 @@ final List<Items> bignsmallfish = [
     type: "Popular",
     rating: "4.2",
     quantity: 0,
+    image: "assets/tangfish.png"
   ),
   Items(
     price: 20,
@@ -49,6 +49,7 @@ final List<Items> bignsmallfish = [
     type: "Discounted",
     rating: "3.6",
     quantity: 0,
+    image: "assets/fishho3.png"
   ),
   Items(
     price: 12,
@@ -56,6 +57,7 @@ final List<Items> bignsmallfish = [
     type: "Low Price",
     rating: "3.9",
     quantity: 0,
+    image: "assets/ladyfish.png"
   ),
   Items(
     price: 104,
@@ -63,6 +65,7 @@ final List<Items> bignsmallfish = [
     type: "Most Expensive",
     rating: "4.9",
     quantity: 0,
+    image: "assets/goldfish.png"
   ),
   Items(
     price: 10,
@@ -70,6 +73,7 @@ final List<Items> bignsmallfish = [
     type: "Low Price",
     rating: "3.9",
     quantity: 0,
+    image: "assets/deadfish.png"
   ),
   // Items(price: "150\$", name: "Dathia Fish", type: "Most Expensive"),
 ];
@@ -81,6 +85,7 @@ final List<Items> halalmeat = [
     type: "Popular",
     rating: "4.9",
     quantity: 0,
+    image: "assets/steak.png"
   ),
   Items(
     price: 20,
@@ -88,6 +93,7 @@ final List<Items> halalmeat = [
     type: "Popular",
     rating: "4.9",
     quantity: 0,
+    image: "assets/mutton.png"
   ),
   Items(
     price: 11,
@@ -95,6 +101,7 @@ final List<Items> halalmeat = [
     type: "Low Price",
     rating: "4.9",
     quantity: 0,
+    image: "assets/chops.png"
   ),
   Items(
     price: 40,
@@ -102,6 +109,7 @@ final List<Items> halalmeat = [
     type: "Discounted",
     rating: "3.7",
     quantity: 0,
+    image: "assets/karahi.png"
   ),
   Items(
     price: 126,
@@ -109,6 +117,7 @@ final List<Items> halalmeat = [
     type: "Most Expensive",
     rating: "4.6",
     quantity: 0,
+    image: "assets/beef.png"
   ),
 ];
 
@@ -119,13 +128,15 @@ final List<Items> fingerf = [
     type: "Most Expensive",
     rating: "4.8",
     quantity: 0,
+    image: "assets/fishsticks.png"
   ),
   Items(
-    price:49,
+    price: 49,
     name: "White Fish",
     type: "Popular",
     rating: "4.4",
     quantity: 0,
+    image: "assets/whitefish.png"
   ),
   Items(
     price: 26,
@@ -133,13 +144,15 @@ final List<Items> fingerf = [
     type: "Low Price",
     rating: "3.2",
     quantity: 0,
+    image: "assets/pangashfish.png"
   ),
   Items(
-    price:50,
+    price: 50,
     name: "Pegasus Fish",
     type: "Discounted",
     rating: "3.5",
     quantity: 0,
+    image: "assets/pegasusfish.png"
   ),
   Items(
     price: 300,
@@ -147,6 +160,7 @@ final List<Items> fingerf = [
     type: "Most Expensive",
     rating: "4.6",
     quantity: 0,
+    image: "assets/chunkyfish.png"
   ),
   Items(
     price: 30,
@@ -154,6 +168,7 @@ final List<Items> fingerf = [
     type: "Low Price",
     rating: "3.9",
     quantity: 0,
+    image: "assets/fourfinger.png"
   ),
   Items(
     price: 57,
@@ -161,6 +176,7 @@ final List<Items> fingerf = [
     type: "Discounted",
     rating: "3.4",
     quantity: 0,
+    image: "assets/specialfish.png"
   ),
   Items(
     price: 10,
@@ -168,6 +184,7 @@ final List<Items> fingerf = [
     type: "Low Price",
     rating: "3.2",
     quantity: 0,
+    image: "assets/fingerfish_ho4.png"
   ),
 ];
 
@@ -178,6 +195,7 @@ final List<Items> tomato = [
     type: "Most Expensive",
     rating: "4.9",
     quantity: 0,
+    
   ),
   Items(
     price: 29,

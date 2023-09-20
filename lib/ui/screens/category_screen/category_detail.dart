@@ -97,17 +97,17 @@ class _CategoryDetailsState extends State<CategoryDetails> {
                             decoration: ShapeDecoration(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12)),
-                              color: const Color.fromARGB(255, 239, 239, 239),
+                              color: Colors.white,
                             ),
-                            child: const Column(
+                            child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Column(
                                   children: [
                                     Image(
                                         height: 70,
-                                        image: AssetImage(
-                                            "assets/Image Icon.png")),
+                                        image:
+                                            AssetImage(product["image"] ?? "")),
                                   ],
                                 ),
                               ],

@@ -10,8 +10,8 @@ class FoodDetailsPage extends StatefulWidget {
     super.key,
     this.addCartdeals,
   });
-  final addCartItem;
-  final addCartdeals;
+  final dynamic addCartItem;
+  final dynamic addCartdeals;
 
   @override
   State<FoodDetailsPage> createState() => _FoodDetailsPageState();
@@ -29,12 +29,9 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: ListView(
                 children: [
-                  const Center(
+                  Center(
                     child: Image(
-                      color: Colors.black,
-                      image: AssetImage(
-                        "assets/Image Icon.png",
-                      ),
+                      image: AssetImage(widget.addCartItem.image),
                       height: 180,
                     ),
                   ),

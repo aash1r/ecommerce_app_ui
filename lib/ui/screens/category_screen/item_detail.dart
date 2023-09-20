@@ -108,18 +108,15 @@ class _ItemDetailsState extends State<ItemDetails> {
                         height: 150,
                         width: 120,
                         decoration: ShapeDecoration(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12)),
-                          color: const Color.fromARGB(255, 239, 239, 239),
-                        ),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12)),
+                            color: Colors.white),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Column(
+                            Column(
                               children: [
-                                Image(
-                                    height: 70,
-                                    image: AssetImage("assets/Image Icon.png")),
+                                Image(height: 70, image: AssetImage(items.image)),
                               ],
                             ),
                             const SizedBox(

@@ -62,12 +62,24 @@ class _AddCardScreenState extends State<AddCardScreen> {
               children: [
                 const SizedBox(height: 60),
                 CustomTextField(
+                  onChanged: (val) {
+                      setState(() {
+                        userCheckoutDetails['Name'] = val;
+                      });
+                      
+                    },
                   textController: _textController,
                   length: 8,
                   label: "Card Holder Name",
                   hint: "Aashir",
                 ),
                 CustomTextField(
+                  onChanged: (val) {
+                      setState(() {
+                        userCheckoutDetails['Card Number'] = val;
+                      });
+                      
+                    },
                   textController: _textController1,
                   input: const TextInputType.numberWithOptions(),
                   length: 16,

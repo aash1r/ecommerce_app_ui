@@ -26,20 +26,20 @@ class DealsContainer extends StatelessWidget {
               decoration: ShapeDecoration(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12)),
-                color: Data.deals[index][3] as Color,
+                color: Colors.white,
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Column(
+                  Column(
                     children: [
                       Image(
-                          height: 70,
-                          image: AssetImage("assets/Image Icon.png")),
+                          height: 80,
+                          image: AssetImage(Data.deals[index][4].toString())),
                     ],
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 5,
                   ),
                   Align(
                     alignment: Alignment.centerRight,
@@ -52,9 +52,8 @@ class DealsContainer extends StatelessWidget {
                                 MaterialPageRoute(
                                     builder: (context) => FoodDetailsPage(
                                           addCartItem: datadeals,
+                                          
                                         )));
-                            // cartItems.add(
-                            //     allProducts[index][index].toString());
                           },
                           child: Container(
                             padding: const EdgeInsets.only(left: 10),

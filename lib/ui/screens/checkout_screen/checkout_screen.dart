@@ -15,25 +15,25 @@ class CheckoutScreen extends StatefulWidget {
 }
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
-  final _textController = TextEditingController();
-  final _textController1 = TextEditingController();
-  final newUser = User();
+  final textController = TextEditingController();
+  final textController1 = TextEditingController();
   bool _isTextFieldEmpty = true;
+  final newUser = User();
 
   @override
   void initState() {
     super.initState();
 
     // Listen for changes in the text field's content
-    _textController.addListener(_textFieldListener);
-    _textController1.addListener(_textFieldListener);
+    textController.addListener(_textFieldListener);
+    textController1.addListener(_textFieldListener);
   }
 
   void _textFieldListener() {
     // Check if the text field is empty
     setState(() {
-      _isTextFieldEmpty = _textController.text.isEmpty;
-      _isTextFieldEmpty = _textController1.text.isEmpty;
+      _isTextFieldEmpty = textController.text.isEmpty;
+      _isTextFieldEmpty = textController1.text.isEmpty;
     });
   }
 
@@ -65,8 +65,14 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
+                    onChanged: (val) {
+                      setState(() {
+                        userCheckoutDetails['Home Address'] = val;
+                      });
+                      
+                    },
                     autofocus: true,
-                    controller: _textController,
+                    controller: textController,
                     decoration: InputDecoration(
                         focusedBorder: const OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.orange)),
@@ -77,7 +83,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             TextStyle(color: Colors.black.withOpacity(0.9)),
                         suffixIcon: IconButton(
                             onPressed: () {
-                              _textController.clear();
+                              textController.clear();
                             },
                             icon: const Icon(
                               Icons.clear_outlined,
@@ -89,8 +95,14 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
+                    onChanged: (val) {
+                      setState(() {
+                        userCheckoutDetails['Office Address'] = val;
+                      });
+                      
+                    },
                     autofocus: true,
-                    controller: _textController1,
+                    controller: textController1,
                     decoration: InputDecoration(
                         focusedBorder: const OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.orange)),
@@ -103,10 +115,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         suffixIcon: IconButton(
                             onPressed: () {
                               setState(() {
-                                newUser.address = _textController.text;
-                                newUser.officeAddress = _textController1.text;
+                                newUser.address = textController.text;
+                                newUser.officeAddress = textController1.text;
                               });
-                              _textController1.clear();
+                              textController1.clear();
                             },
                             icon: const Icon(
                               Icons.clear_outlined,
@@ -141,7 +153,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>  AddCardScreen(user: newUser,),
+                                builder: (context) => const AddCardScreen(),
                               ));
                         },
                   child: CustomButton(
